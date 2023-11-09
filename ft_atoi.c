@@ -6,7 +6,7 @@
 /*   By: agerbaud <agerbaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 16:21:42 by agerbaud          #+#    #+#             */
-/*   Updated: 2023/11/07 17:17:37 by agerbaud         ###   ########.fr       */
+/*   Updated: 2023/11/08 11:40:03 by agerbaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,8 @@ int	ft_atoi(const char *nptr)
 			sign = -sign;
 		i++;
 	}
-	while (nptr[i])
+	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
-		if (!(nptr[i] >= '0' && nptr[i] <= '9'))
-			return (0);
 		nb = nb * 10 + (nptr[i] - '0');
 		i++;
 	}

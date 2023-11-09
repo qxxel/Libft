@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agerbaud <agerbaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 15:31:53 by agerbaud          #+#    #+#             */
-/*   Updated: 2023/11/08 10:49:58 by agerbaud         ###   ########.fr       */
+/*   Created: 2023/11/08 12:53:17 by agerbaud          #+#    #+#             */
+/*   Updated: 2023/11/08 14:09:40 by agerbaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t				i;
-	const unsigned char	*s_tmp = s;
+	size_t		i;
+	char		*sub;
 
-	if (n == 0)
-		return (NULL);
 	i = 0;
-	while (i < n)
+	if (!s)
+		return (NULL);
+	if (start >= ft_strlen(s))
+		return (ft_calloc(1, sizeof(char)));
+	sub = (char *)malloc((len + 1) * sizeof(char));
+	if (!sub)
+		return (NULL);
+	while (i < len && s[start + i])
 	{
-		if (s_tmp[i] == (unsigned char)c)
-			return ((unsigned char *)s + i);
+		sub[i] = s[start + i];
 		i++;
 	}
-	return (NULL);
+	sub[i] = 0;
+	return (sub);
 }

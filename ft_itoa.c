@@ -1,30 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agerbaud <agerbaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 15:31:53 by agerbaud          #+#    #+#             */
-/*   Updated: 2023/11/08 10:49:58 by agerbaud         ###   ########.fr       */
+/*   Created: 2023/11/09 10:30:39 by agerbaud          #+#    #+#             */
+/*   Updated: 2023/11/09 12:02:27 by agerbaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+int	ft_abs(int n)
 {
-	size_t				i;
-	const unsigned char	*s_tmp = s;
+	return (n * ((n > 0) - (n < 0)));
+}
 
-	if (n == 0)
-		return (NULL);
-	i = 0;
-	while (i < n)
+char	*ft_itoa(int n)
+{
+	int		n_tmp;
+	size_t	len;
+	char	*number;
+
+	n_tmp = n;
+	len = 1 + (n <= 0);
+	while (n_tmp != 0)
 	{
-		if (s_tmp[i] == (unsigned char)c)
-			return ((unsigned char *)s + i);
-		i++;
+		n_tmp /= 10;
+		len++;
 	}
-	return (NULL);
+	number = (char *)malloc(len * sizeof(char));
+	if (!number)
+		return (NULL);
+	number[--len] = 0;
+	if (n < 0)
+		number[0] = '-';
+	else
+		number[0] = '0';
+	while (n)
+	{
+		number[--len] = ft_abs(n % 10) + '0';
+		n /= 10;
+	}
+	return (number);
 }

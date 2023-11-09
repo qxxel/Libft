@@ -6,7 +6,7 @@
 /*   By: agerbaud <agerbaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:57:46 by agerbaud          #+#    #+#             */
-/*   Updated: 2023/11/07 17:14:24 by agerbaud         ###   ########.fr       */
+/*   Updated: 2023/11/08 10:55:20 by agerbaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	while (s || c == 0)
+	while (s[0] != 0 || (unsigned char)c == 0)
 	{
-		if (s[0] == c)
+		if (s[0] == (unsigned char)c)
 			return ((char *)s);
 		s++;
 	}

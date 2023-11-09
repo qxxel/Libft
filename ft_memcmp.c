@@ -6,7 +6,7 @@
 /*   By: agerbaud <agerbaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 15:43:21 by agerbaud          #+#    #+#             */
-/*   Updated: 2023/11/07 16:58:39 by agerbaud         ###   ########.fr       */
+/*   Updated: 2023/11/08 10:48:57 by agerbaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	i = 0;
 	if (n == 0)
 		return (0);
-	while (s1_tmp[i] && s2_tmp[i] && i < n - 1 && s1_tmp[i] == s2_tmp[i])
+	while (i < n - 1 && s1_tmp[i] == s2_tmp[i])
 		i++;
 	return (s1_tmp[i] - s2_tmp[i]);
 }

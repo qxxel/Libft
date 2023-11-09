@@ -6,13 +6,13 @@
 /*   By: agerbaud <agerbaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:07:51 by agerbaud          #+#    #+#             */
-/*   Updated: 2023/11/07 14:10:10 by agerbaud         ###   ########.fr       */
+/*   Updated: 2023/11/08 10:52:26 by agerbaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_tolower(int c)
 {
-	if (c > 'A' && c < 'Z')
+	if (c >= 'A' && c <= 'Z')
 		return (c + 32);
 	else
 		return (c);
