@@ -6,7 +6,7 @@
 /*   By: agerbaud <agerbaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 13:41:17 by agerbaud          #+#    #+#             */
-/*   Updated: 2023/11/08 12:01:29 by agerbaud         ###   ########.fr       */
+/*   Updated: 2023/11/10 10:36:16 by agerbaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	size_t	j;
 
 	i = 0;
-	if (size == 0)
-		return (0);
 	j = ft_strlen(dst);
 	if (size <= j)
 		return (ft_strlen(src) + size);

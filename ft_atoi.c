@@ -6,13 +6,11 @@
 /*   By: agerbaud <agerbaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 16:21:42 by agerbaud          #+#    #+#             */
-/*   Updated: 2023/11/08 11:40:03 by agerbaud         ###   ########.fr       */
+/*   Updated: 2023/11/13 13:31:06 by agerbaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	ft_iswhitespace(char c)
+static int	ft_iswhitespace(char c)
 {
 	if (c == ' ' || c == '\f' || c == '\n' || c == '\r' || c == '\t'
 		|| c == '\v')

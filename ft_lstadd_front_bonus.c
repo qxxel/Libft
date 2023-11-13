@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agerbaud <agerbaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 15:14:38 by agerbaud          #+#    #+#             */
-/*   Updated: 2023/11/10 16:04:40 by agerbaud         ###   ########.fr       */
+/*   Created: 2023/11/09 16:54:32 by agerbaud          #+#    #+#             */
+/*   Updated: 2023/11/09 17:16:32 by agerbaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	size_t	i;
-
-	i = 0;
-	if (n == 0)
-		return (0);
-	while ((unsigned char)s1[i] && i < n - 1
-		&& ((unsigned char)s1[i] == (unsigned char)s2[i]))
-		i++;
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	new->next = *lst;
+	*lst = new;
 }

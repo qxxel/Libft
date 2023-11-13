@@ -6,13 +6,13 @@
 /*   By: agerbaud <agerbaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:30:39 by agerbaud          #+#    #+#             */
-/*   Updated: 2023/11/09 12:02:27 by agerbaud         ###   ########.fr       */
+/*   Updated: 2023/11/13 13:31:31 by agerbaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_abs(int n)
+static int	ft_abs(int n)
 {
 	return (n * ((n > 0) - (n < 0)));
 }

@@ -6,11 +6,9 @@
 /*   By: agerbaud <agerbaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:57:46 by agerbaud          #+#    #+#             */
-/*   Updated: 2023/11/08 10:55:20 by agerbaud         ###   ########.fr       */
+/*   Updated: 2023/11/13 13:27:23 by agerbaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {
