@@ -6,7 +6,7 @@
 #    By: agerbaud <agerbaud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 12:34:17 by agerbaud          #+#    #+#              #
-#    Updated: 2023/11/13 17:57:23 by agerbaud         ###   ########.fr        #
+#    Updated: 2023/11/14 09:59:00 by agerbaud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,7 @@ SRCS_BONUS =	ft_lstnew_bonus.c		\
 				ft_lstiter_bonus.c		\
 				ft_lstmap_bonus.c
 
-CC = gcc -Wall -Wextra -Werror -MMD
+CC = cc -Wall -Wextra -Werror -MMD
 
 OBJECTS = $(SRCS:.c=.o)
 OBJECTS_BONUS = $(SRCS_BONUS:.c=.o)
@@ -75,8 +75,8 @@ $(NAME): $(OBJECTS)
 
 all: $(NAME)
 
-bonus: $(NAME) $(OBJECTS_BONUS)
-	$(AR) -crs $^
+bonus:
+	@$(MAKE) SRCS="$(SRCS) $(SRCS_BONUS)"
 
 clean:
 	$(RM) $(OBJECTS) $(OBJECTS_BONUS) $(DEPENDANCIES)
