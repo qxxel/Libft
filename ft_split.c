@@ -6,13 +6,13 @@
 /*   By: agerbaud <agerbaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:36:22 by agerbaud          #+#    #+#             */
-/*   Updated: 2023/11/13 13:27:09 by agerbaud         ###   ########.fr       */
+/*   Updated: 2023/11/15 12:00:43 by agerbaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	howmany(const char *s, char c)
+static size_t	ft_how_many(const char *s, char c)
 {
 	size_t	i;
 	size_t	count;
@@ -28,13 +28,13 @@ static size_t	howmany(const char *s, char c)
 	return (count);
 }
 
-static char	**ft_nullterminated(char **s, int i)
+static char	**ft_null_terminated(char **s, int i)
 {
 	s[i] = NULL;
 	return (s);
 }
 
-static char	**ft_freeall(char **s, int i)
+static char	**ft_free_all(char **s, int i)
 {
 	while (i >= 0)
 	{
@@ -54,7 +54,7 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	final = (char **)malloc(sizeof(char *) * (howmany(s, c)));
+	final = (char **)malloc(sizeof(char *) * (ft_how_many(s, c)));
 	if (!final)
 		return (NULL);
 	start = 0;
@@ -68,8 +68,8 @@ char	**ft_split(char const *s, char c)
 		{
 			final[i++] = ft_substr(s, start, end - start);
 			if (!final[i - 1])
-				return (ft_freeall(final, i - 1));
+				return (ft_free_all(final, i - 1));
 		}
 	}
-	return (ft_nullterminated(final, i));
+	return (ft_null_terminated(final, i));
 }
