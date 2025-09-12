@@ -6,7 +6,7 @@
 #    By: agerbaud <agerbaud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 12:34:17 by agerbaud          #+#    #+#              #
-#    Updated: 2023/11/14 09:59:00 by agerbaud         ###   ########.fr        #
+#    Updated: 2023/11/16 15:12:59 by agerbaud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,6 +63,9 @@ OBJECTS = $(SRCS:.c=.o)
 OBJECTS_BONUS = $(SRCS_BONUS:.c=.o)
 DEPENDANCIES = $(SRCS:.c=.d) $(SRCS_BONUS:.c=.d)
 
+
+all: $(NAME)
+
 $(NAME): $(OBJECTS)
 	$(AR) -crs $@ $^
 
@@ -70,10 +73,8 @@ $(NAME): $(OBJECTS)
 
 
 %.o: %.c
-	$(CC) -include $(INCLUDE) -c $<
+	$(CC) -c $<
 
-
-all: $(NAME)
 
 bonus:
 	@$(MAKE) SRCS="$(SRCS) $(SRCS_BONUS)"

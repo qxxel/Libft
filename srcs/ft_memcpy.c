@@ -1,25 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agerbaud <agerbaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 15:05:45 by agerbaud          #+#    #+#             */
-/*   Updated: 2023/11/13 13:29:04 by agerbaud         ###   ########.fr       */
+/*   Created: 2023/11/07 10:34:36 by agerbaud          #+#    #+#             */
+/*   Updated: 2023/11/30 09:56:33 by agerbaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strrchr(const char *s, int c)
-{
-	int	i;
+#include "libft.h"
 
-	i = ft_strlen(s);
-	while (i >= 0)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	char		*dest_tmp;
+	const char	*src_tmp;
+	size_t		i;
+
+	if (!dest && !src)
+		return (dest);
+	dest_tmp = dest;
+	src_tmp = src;
+	if (dest < src)
 	{
-		if (s[i] == (unsigned char)c)
-			return ((char *)s + i);
-		i--;
+		i = 0;
+		while (i < n)
+		{
+			dest_tmp[i] = src_tmp[i];
+			i++;
+		}
 	}
-	return (NULL);
+	else
+	{
+		while (n--)
+			dest_tmp[n] = src_tmp[n];
+	}
+	return (dest);
 }
