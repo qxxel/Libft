@@ -6,7 +6,7 @@
 #    By: agerbaud <agerbaud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 12:34:17 by agerbaud          #+#    #+#              #
-#    Updated: 2025/09/12 09:57:27 by agerbaud         ###   ########.fr        #
+#    Updated: 2025/09/12 10:09:04 by agerbaud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,11 +57,15 @@ SRCS_BONUS =	srcs/bonus/ft_lstnew_bonus.c		\
 				srcs/bonus/ft_lstiter_bonus.c		\
 				srcs/bonus/ft_lstmap_bonus.c
 
-CC = cc -Wall -Wextra -Werror -MMD
+BUILD_DIR = .build
 
-OBJECTS = $(SRCS:.c=.o)
-OBJECTS_BONUS = $(SRCS_BONUS:.c=.o)
-DEPENDANCIES = $(SRCS:.c=.d) $(SRCS_BONUS:.c=.d)
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -MMD
+RF = -rf
+
+OBJECTS = $(SRCS:%.c=$(BUILD_DIR)/%.o)
+OBJECTS_BONUS = $(SRCS_BONUS:%.c=$(BUILD_DIR)/%.o)
+DEPENDANCIES = $(SRCS:%.c=$(BUILD_DIR)/%.d) $(SRCS_BONUS:%.c=$(BUILD_DIR)/%.d)
 
 
 all: $(NAME)
@@ -71,16 +75,16 @@ $(NAME): $(OBJECTS)
 
 -include $(DEPENDANCIES)
 
-
-%.o: %.c
-	$(CC) -c $<
+$(BUILD_DIR)/%.o: %.c
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 
 bonus:
 	@$(MAKE) SRCS="$(SRCS) $(SRCS_BONUS)"
 
 clean:
-	$(RM) $(OBJECTS) $(OBJECTS_BONUS) $(DEPENDANCIES)
+	$(RM) $(RF) $(BUILD_DIR)
 
 fclean: clean
 	$(RM) $(NAME)
@@ -92,4 +96,4 @@ so:
 	gcc -nostartfiles -shared -o libft.so $(OBJECTS) $(OBJECTS_BONUS)
 
 
-.PHONY: all bonus clean fclean re
+.PHONY: all bonus clean fclean re so
