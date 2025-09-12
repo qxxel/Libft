@@ -6,11 +6,11 @@
 /*   By: agerbaud <agerbaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 13:13:24 by agerbaud          #+#    #+#             */
-/*   Updated: 2023/11/13 13:17:28 by agerbaud         ###   ########.fr       */
+/*   Updated: 2025/09/12 09:58:55 by agerbaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/libft.h"
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {

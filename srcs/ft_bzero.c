@@ -6,11 +6,11 @@
 /*   By: agerbaud <agerbaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 17:28:39 by agerbaud          #+#    #+#             */
-/*   Updated: 2023/11/10 16:02:04 by agerbaud         ###   ########.fr       */
+/*   Updated: 2025/09/12 09:58:27 by agerbaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 void	*ft_bzero(void *s, size_t n)
 {

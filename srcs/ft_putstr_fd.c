@@ -6,15 +6,15 @@
 /*   By: agerbaud <agerbaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 14:11:33 by agerbaud          #+#    #+#             */
-/*   Updated: 2024/01/31 10:45:29 by agerbaud         ###   ########.fr       */
+/*   Updated: 2025/09/12 09:59:14 by agerbaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 void	ft_putstr_fd(char *s, int fd)
 {
 	if (!s)
 		return ;
-	write(1, s, ft_strlen(s));
+	write(fd, s, ft_strlen(s));
 }
