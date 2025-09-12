@@ -2,3 +2,4 @@
 *.d
 libft.a
 .vscode
+.build
