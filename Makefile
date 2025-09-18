@@ -3,59 +3,59 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: agerbaud <agerbaud@student.42.fr>          +#+  +:+       +#+         #
+#    By: agerbaud <agerbaud@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 12:34:17 by agerbaud          #+#    #+#              #
-#    Updated: 2025/09/12 10:09:04 by agerbaud         ###   ########.fr        #
+#    Updated: 2025/09/18 22:27:26 by agerbaud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 INCLUDE = includes/libft.h
-SRCS =	srcs/ft_isalpha.c		\
-		srcs/ft_isdigit.c		\
-		srcs/ft_isalnum.c		\
-		srcs/ft_isascii.c		\
-		srcs/ft_isprint.c		\
-		srcs/ft_strlen.c		\
-		srcs/ft_memset.c		\
-		srcs/ft_bzero.c			\
-		srcs/ft_memcpy.c		\
-		srcs/ft_memmove.c		\
-		srcs/ft_strlcpy.c		\
-		srcs/ft_strlcat.c		\
-		srcs/ft_toupper.c		\
-		srcs/ft_tolower.c		\
-		srcs/ft_strchr.c		\
-		srcs/ft_strrchr.c		\
-		srcs/ft_strncmp.c		\
-		srcs/ft_memchr.c		\
-		srcs/ft_memcmp.c		\
-		srcs/ft_strnstr.c		\
-		srcs/ft_atoi.c			\
-		srcs/ft_calloc.c		\
-		srcs/ft_strdup.c		\
-		srcs/ft_substr.c		\
-		srcs/ft_strjoin.c		\
-		srcs/ft_strtrim.c		\
-		srcs/ft_split.c			\
-		srcs/ft_itoa.c			\
-		srcs/ft_strmapi.c		\
-		srcs/ft_striteri.c		\
-		srcs/ft_putchar_fd.c	\
-		srcs/ft_putstr_fd.c		\
-		srcs/ft_putendl_fd.c	\
-		srcs/ft_putnbr_fd.c
+SRCS =	srcs/checkers/ft_isalnum.c		\
+		srcs/checkers/ft_isalpha.c		\
+		srcs/checkers/ft_isascii.c		\
+		srcs/checkers/ft_isdigit.c		\
+		srcs/checkers/ft_isprint.c		\
+		srcs/display/ft_putchar_fd.c	\
+		srcs/display/ft_putendl_fd.c	\
+		srcs/display/ft_putnbr_fd.c		\
+		srcs/display/ft_putstr_fd.c		\
+		srcs/list/ft_lstadd_back.c		\
+		srcs/list/ft_lstadd_front.c		\
+		srcs/list/ft_lstclear.c			\
+		srcs/list/ft_lstdelone.c		\
+		srcs/list/ft_lstiter.c			\
+		srcs/list/ft_lstlast.c			\
+		srcs/list/ft_lstmap.c			\
+		srcs/list/ft_lstnew.c			\
+		srcs/list/ft_lstsize.c			\
+		srcs/memory/ft_memset.c			\
+		srcs/memory/ft_memcpy.c			\
+		srcs/memory/ft_memmove.c		\
+		srcs/memory/ft_memchr.c			\
+		srcs/memory/ft_memcmp.c			\
+		srcs/others/ft_atoi.c			\
+		srcs/others/ft_bzero.c			\
+		srcs/others/ft_calloc.c			\
+		srcs/others/ft_itoa.c			\
+		srcs/others/ft_split.c			\
+		srcs/others/ft_tolower.c		\
+		srcs/others/ft_toupper.c		\
+		srcs/string/ft_strchr.c			\
+		srcs/string/ft_strdup.c			\
+		srcs/string/ft_striteri.c		\
+		srcs/string/ft_strjoin.c		\
+		srcs/string/ft_strlcat.c		\
+		srcs/string/ft_strlcpy.c		\
+		srcs/string/ft_strlen.c			\
+		srcs/string/ft_strmapi.c		\
+		srcs/string/ft_strncmp.c		\
+		srcs/string/ft_strnstr.c		\
+		srcs/string/ft_strrchr.c		\
+		srcs/string/ft_strtrim.c		\
+		srcs/string/ft_substr.c
 
-SRCS_BONUS =	srcs/bonus/ft_lstnew_bonus.c		\
-				srcs/bonus/ft_lstadd_front_bonus.c	\
-				srcs/bonus/ft_lstsize_bonus.c		\
-				srcs/bonus/ft_lstlast_bonus.c		\
-				srcs/bonus/ft_lstadd_back_bonus.c	\
-				srcs/bonus/ft_lstdelone_bonus.c		\
-				srcs/bonus/ft_lstclear_bonus.c		\
-				srcs/bonus/ft_lstiter_bonus.c		\
-				srcs/bonus/ft_lstmap_bonus.c
 
 BUILD_DIR = .build
 
@@ -64,8 +64,7 @@ CFLAGS = -Wall -Wextra -Werror -MMD
 RF = -rf
 
 OBJECTS = $(SRCS:%.c=$(BUILD_DIR)/%.o)
-OBJECTS_BONUS = $(SRCS_BONUS:%.c=$(BUILD_DIR)/%.o)
-DEPENDANCIES = $(SRCS:%.c=$(BUILD_DIR)/%.d) $(SRCS_BONUS:%.c=$(BUILD_DIR)/%.d)
+DEPENDANCIES = $(SRCS:%.c=$(BUILD_DIR)/%.d)
 
 
 all: $(NAME)
@@ -80,9 +79,6 @@ $(BUILD_DIR)/%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 
-bonus:
-	@$(MAKE) SRCS="$(SRCS) $(SRCS_BONUS)"
-
 clean:
 	$(RM) $(RF) $(BUILD_DIR)
 
@@ -92,8 +88,8 @@ fclean: clean
 re: fclean all
 
 so:
-	$(CC) -nostartfiles -fPIC $(SRCS) $(SRCS_BONUS)
-	gcc -nostartfiles -shared -o libft.so $(OBJECTS) $(OBJECTS_BONUS)
+	$(CC) -nostartfiles -fPIC $(SRCS)
+	gcc -nostartfiles -shared -o libft.so $(OBJECTS) 
 
 
-.PHONY: all bonus clean fclean re so
+.PHONY: all clean fclean re so
